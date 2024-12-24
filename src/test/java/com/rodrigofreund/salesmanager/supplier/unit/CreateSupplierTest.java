@@ -1,4 +1,4 @@
-package com.rodrigofreund.salesmanager.supplier;
+package com.rodrigofreund.salesmanager.supplier.unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -15,10 +15,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.rodrigofreund.salesmanager.domain.Supplier;
 import com.rodrigofreund.salesmanager.supplier.application.usecase.CreateSupplierImpl;
 import com.rodrigofreund.salesmanager.supplier.entity.gateway.SupplierRepository;
-import com.rodrigofreund.salesmanager.supplier.entity.model.SupplierImpl;
 
 @ExtendWith(MockitoExtension.class)
-public class CreateSupplierTest {
+public class CreateSupplierTest implements AbstractSupplierTest {
 
     @Mock
     private SupplierRepository repository;
@@ -40,13 +39,5 @@ public class CreateSupplierTest {
         assertEquals(newSupplier.color(), supplier.color());
         assertEquals(newSupplier.image(), supplier.image());
         assertFalse(supplier.active());
-    }
-    
-    private Supplier createPersistedSupplier() {
-        return SupplierImpl.of(1, "Keldrin", "#18BC18", "keldrinLogo.png");
-    }
-
-    private Supplier createSupplier() {
-        return SupplierImpl.of("Keldrin", "#18BC18", "keldrinLogo.png");
     }
 }
